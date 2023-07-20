@@ -7,6 +7,9 @@ function pr($dt) {
 	print_r($dt);
 	echo '</pre>';
 }
+function sortByName($a, $b) {
+	return strcmp($a[1], $b[1]);
+}
 
 $dt = file_get_contents('location.json');
 $dt = json_decode($dt,1);
@@ -24,18 +27,26 @@ foreach ($dt as $v) {
 	$village[$id[0].$id[1].$id[2]][$id[0].$id[1].$id[2].$id[3]] = [intval($id[0].$id[1].$id[2].$id[3]),$v['village'],$v['postal']];
 }
 
-// file_put_contents('api/province.json', json_encode(array_values($province)));
+// $province = array_values($province);
+// usort($province, 'sortByName');
+// file_put_contents('api/province.json', json_encode($province));
 
 // foreach ($city as $k => $v) {
-// 	file_put_contents('api/city/'.$k.'.json', json_encode(array_values($v)));
+// 	$v = array_values($v);
+// 	usort($v, 'sortByName');
+// 	file_put_contents('api/city/'.$k.'.json', json_encode($v));
 // }
 
 // foreach ($district as $k => $v) {
-// 	file_put_contents('api/district/'.$k.'.json', json_encode(array_values($v)));
+// 	$v = array_values($v);
+// 	usort($v, 'sortByName');
+// 	file_put_contents('api/district/'.$k.'.json', json_encode($v));
 // }
 
 // foreach ($village as $k => $v) {
-// 	file_put_contents('api/village/'.$k.'.json', json_encode(array_values($v)));
+// 	$v = array_values($v);
+// 	usort($v, 'sortByName');
+// 	file_put_contents('api/village/'.$k.'.json', json_encode($v));
 // }
 
 echo 'SELESAI';
